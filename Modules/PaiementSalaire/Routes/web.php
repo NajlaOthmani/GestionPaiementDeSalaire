@@ -21,9 +21,7 @@ Route::prefix('paiementsalaire')->group(function() {
     Route::get('/typeContrat', [ContratController::class,'showTypeContrat']);
     Route::post('/typeContrat',[ContratController::class,'handleAddTypeContrat'])->name('handleAddTypeContrats');
 
-    Route::get('/calculSalaire', [PaiementSalaireController::class,'index']);
-    Route::post('/calculSalaire',[PaiementSalaireController::class,'handleCalculSalaire'])->name('handleCalculSalaires');
-   
-    Route::get('/employe',[ExporterPdfController::class,'downloadPdf']);
+    Route::get('/calculSalaire', [PaiementSalaireController::class,'index'])->name('handleCalculSalaires');
+    Route::get('/exporter',[ExporterPdfController::class,'downloadPdf']);
 });
 

@@ -9,28 +9,22 @@ use Illuminate\Routing\Controller;
 class PaiementSalaireController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * calculate employee net salary
+     * @param Request $request
      * @return Renderable
      */
     public function index(Request $request)
     {
-        $salaryEmploye = $request->salaire;
-        $retainedCnss =$request->salaire;
-        return view('paiementsalaire::calculSalaire',compact('salaryEmploye','retainedCnss'));
+       $salaryEmploye = $request->salaire;
+       $retainedCnss =$request->salaire*9/100;
+       $taxableSalary =$salaryEmploye- $retainedCnss;
+       $tax=$request->salaire*9/100;
+       $netSalary =$taxableSalary -$tax;
+       $cinEmploye=$request->cin;
+       return view('paiementsalaire::calculSalaire',compact('salaryEmploye','retainedCnss','taxableSalary','netSalary','tax','cinEmploye'));
     }
 
-    /**
-     * Create a new type of contract.
-     * @param Request $request
-     * @return Renderable
-     */
-    public function handleCalculSalaire(Request $request)
-    {
-        $salaryEmploye = $request->salaire;
-       $retainedCnss =$request->salaire*9/100;
-       return view('paiementsalaire::calculSalaire',compact('salaryEmploye','retainedCnss'));
     
-    }
     
        
 }

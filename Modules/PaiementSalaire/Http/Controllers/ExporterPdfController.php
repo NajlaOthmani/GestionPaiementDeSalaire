@@ -9,11 +9,14 @@ use Modules\PaiementSalaire\Entities\Employe;
 use PDF;
 class ExporterPdfController extends Controller
 {
-    
+    /**
+     * export payslip
+     * @return Renderable
+     */
     public function downloadPdf() 
 	{
 		$data =Employe::all();
-		$pdf = PDF::loadView('paiementsalaire::pdf.employe', ['data'=>$data],
+		$pdf = PDF::loadView('paiementsalaire::pdf.exporter', ['data'=>$data],
 		[
 			'mode'                 => '',
 			'format'               => 'A4',
@@ -42,5 +45,14 @@ class ExporterPdfController extends Controller
 		]);
 		return $pdf->stream('fichePaie.pdf');
 	}
+
+	/**
+     * return the list of employees.
+     * @return Renderable
+     */
+    public function showPage()
+    {
+        return view('paiementsalaire::pdf.exporter');
+    }
 
 }
