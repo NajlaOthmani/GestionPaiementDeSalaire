@@ -1,0 +1,13 @@
+{
+    "name": "PaiementSalaire",
+    "alias": "paiementsalaire",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\PaiementSalaire\\Providers\\PaiementSalaireServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}
